@@ -1,0 +1,22 @@
+<div class="header py-3 px-2 my-2">
+  <h1 class="mb-4">YELP MVP</h1>
+  <button class="btn btn-primary p-2"><%= link_to 'Add a restaurant', new_restaurant_path %></button>
+</div>
+
+<ul class="list-group">
+  <% @restaurants.each do |restaurant|%>
+    <li class="list-group-item">
+        <div class="restaurant-name d-flex justify-content-start">
+          <h3><%= restaurant.name %></h3>
+          <%= link_to restaurant_path(restaurant) do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        </div>
+        <p><%= restaurant.category.capitalize %></p>
+        <p>rating: <%= restaurant.reviews.average(:rating).round(1) %></p>
+        <p>reviews: <%= restaurant.reviews.count %></p>
+    </li>
+  <% end %>
+</ul>
+
+</div>
